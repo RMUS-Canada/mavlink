@@ -27,10 +27,10 @@
             </entry>
         </enum>
         <enum name="MAV_TYPE">
-            <entry value="49" name="MAV_TYPE_RADIATION_DETECTOR">
+            <entry value="50" name="MAV_TYPE_RADIATION_DETECTOR">
                 <description>FlexSpec radiation detector</description>
             </entry>
-            <entry value="50" name="MAV_TYPE_GAS_DETECTOR">
+            <entry value="51" name="MAV_TYPE_GAS_DETECTOR">
                 <description>BlackLine G7c gas detector</description>
             </entry>
         </enum>
@@ -88,6 +88,8 @@
             <field type="uint64_t" name="timestamp">Timestamp</field>
             <field type="uint32_t" name="dose_rate">Dose rate</field>
             <field type="uint8_t" name="dose_rate_alarm" enum="MAV_BOOL">Dose rate alarm</field>
+            <field type="uint16_t" name="angle">Angle (centi-degrees)</field>
+            <field type="uint32_t" name="angle_uncertainty">Angle uncertainty (degrees)</field>
         </message>
 
         <message id="20101" name="RMUS_RADIATION_EVENT">

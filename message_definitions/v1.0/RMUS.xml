@@ -71,6 +71,123 @@
                 <description>Neutron</description>
             </entry>
         </enum>
+        <enum name="RMUS_GAS_TYPE">
+            <entry value="0" name="RMUS_GAS_TYPE_FRESH_AIR">
+                <description>Fresh air</description>
+            </entry>
+            <entry value="1" name="RMUS_GAS_TYPE_H2S">
+                <description>H2S</description>
+            </entry>
+            <entry value="2" name="RMUS_GAS_TYPE_CO">
+                <description>CO</description>
+            </entry>
+            <entry value="3" name="RMUS_GAS_TYPE_O2">
+                <description>O2</description>
+            </entry>
+            <entry value="4" name="RMUS_GAS_TYPE_CO2">
+                <description>CO2</description>
+            </entry>
+            <entry value="5" name="RMUS_GAS_TYPE_LEL">
+                <description>LEL</description>
+            </entry>
+            <entry value="6" name="RMUS_GAS_TYPE_N2">
+                <description>N2</description>
+            </entry>
+            <entry value="7" name="RMUS_GAS_TYPE_NH3">
+                <description>NH3</description>
+            </entry>
+            <entry value="8" name="RMUS_GAS_TYPE_SO2">
+                <description>SO2</description>
+            </entry>
+            <entry value="9" name="RMUS_GAS_TYPE_CL2">
+                <description>Cl2</description>
+            </entry>
+            <entry value="10" name="RMUS_GAS_TYPE_VOC_PPM">
+                <description>VOC (PPM)</description>
+            </entry>
+            <entry value="11" name="RMUS_GAS_TYPE_HCN">
+                <description>HCN</description>
+            </entry>
+            <entry value="12" name="RMUS_GAS_TYPE_H2">
+                <description>H2</description>
+            </entry>
+            <entry value="13" name="RMUS_GAS_TYPE_CLO2">
+                <description>ClO2</description>
+            </entry>
+            <entry value="14" name="RMUS_GAS_TYPE_O3">
+                <description>O3</description>
+            </entry>
+            <entry value="15" name="RMUS_GAS_TYPE_VOC_PPB">
+                <description>VOC (PPB)</description>
+            </entry>
+            <entry value="16" name="RMUS_GAS_TYPE_NO2">
+                <description>NO2</description>
+            </entry>
+            <entry value="17" name="RMUS_GAS_TYPE_NN_LEL">
+                <description>NN-LEL</description>
+            </entry>
+            <entry value="18" name="RMUS_GAS_TYPE_HF">
+                <description>HF</description>
+            </entry>
+        </enum>
+        <enum name="RMUS_GAS_UNIT_TYPE">
+            <entry value="0" name="RMUS_GAS_UNIT_TYPE_PPM">
+                <description>PPM</description>
+            </entry>
+            <entry value="1" name="RMUS_GAS_UNIT_TYPE_PERCENT_VOL">
+                <description>Percent volume</description>
+            </entry>
+            <entry value="2" name="RMUS_GAS_UNIT_TYPE_PERCENT_LEL">
+                <description>Percent LEL</description>
+            </entry>
+            <entry value="3" name="RMUS_GAS_UNIT_TYPE_MG_M3">
+                <description>mg/m³</description>
+            </entry>
+            <entry value="4" name="RMUS_GAS_UNIT_TYPE_DEFAULT">
+                <description>Default</description>
+            </entry>
+        </enum>
+        <enum name="RMUS_GAS_SENSOR_STATUS">
+            <entry value="1" name="RMUS_GAS_SENSOR_STATUS_UNDER_LIMIT_MASK">
+                <description>Under limit mask</description>
+            </entry>
+            <entry value="2" name="RMUS_GAS_SENSOR_STATUS_LOW_GAS_ALARM_MASK">
+                <description>Low gas alarm mask</description>
+            </entry>
+            <entry value="4" name="RMUS_GAS_SENSOR_STATUS_LOW_GAS_ALERT_MASK">
+                <description>Low gas alert mask</description>
+            </entry>
+            <entry value="8" name="RMUS_GAS_SENSOR_STATUS_GAS_ALARM_MASK">
+                <description>Gas alarm mask</description>
+            </entry>
+            <entry value="16" name="RMUS_GAS_SENSOR_STATUS_GAS_ALERT_MASK">
+                <description>Gas alert mask</description>
+            </entry>
+            <entry value="32" name="RMUS_GAS_SENSOR_STATUS_TWA_ALERT_MASK">
+                <description>TWA alert mask</description>
+            </entry>
+            <entry value="64" name="RMUS_GAS_SENSOR_STATUS_STEL_ALERT_MASK">
+                <description>STEL alert mask</description>
+            </entry>
+            <entry value="128" name="RMUS_GAS_SENSOR_STATUS_OVER_LIMIT_MASK">
+                <description>Over limit mask</description>
+            </entry>
+            <entry value="1024" name="RMUS_GAS_SENSOR_STATUS_CALIB_OVERDUE_MASK">
+                <description>Calibration overdue mask</description>
+            </entry>
+            <entry value="2048" name="RMUS_GAS_SENSOR_STATUS_ATTACHED_MASK">
+                <description>Attached mask</description>
+            </entry>
+            <entry value="536870912" name="RMUS_GAS_SENSOR_STATUS_ERROR_MASK">
+                <description>Error mask</description>
+            </entry>
+            <entry value="1073741824" name="RMUS_GAS_SENSOR_STATUS_UNRESPONSIVE_ERROR_MASK">
+                <description>Unresponsive error mask</description>
+            </entry>
+            <entry value="2147483648" name="RMUS_GAS_SENSOR_STATUS_DISABLED_ERROR_MASK">
+                <description>Disabled error mask</description>
+            </entry>
+        </enum>
 
     </enums>
 
@@ -103,6 +220,19 @@
             <field type="char[20]" name="isotope">Isotope</field>
             <field type="uint8_t" name="threat_level" enum="RMUS_RADIATION_THREAT_LEVEL">Threat level</field>
             <field type="uint8_t" name="confidence">Confidence</field>
+        </message>
+
+        <message id="20103" name="RMUS_GAS_EVENT">
+            <description>Gas sensor event</description>
+            <field type="uint64_t" name="timestamp">Timestamp in seconds since Jan 1, 1970</field>
+            <field type="float" name="temperature">Sensor temperature in degrees Celsius</field>
+            <field type="float" name="pressure">Sensor pressure in Hectopascals (hPa)</field>
+            <field type="float" name="humidity">Sensor humidity in %</field>
+            <field type="float" name="pump_flow_rate">Flow rate</field>
+            <field type="uint32_t" name="slot_status">Status mask for the gas slot (RMUS_GAS_SENSOR_STATUS)</field>
+            <field type="uint8_t" name="gas_type" enum="RMUS_GAS_TYPE">Gas type identifier</field>
+            <field type="float" name="reading">Current sensor reading</field>
+            <field type="uint8_t" name="units" enum="RMUS_GAS_UNIT_TYPE">Units of the reading</field>
         </message>
 
     </messages>
